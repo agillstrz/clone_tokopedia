@@ -23,12 +23,12 @@ function Hero() {
 
   const { loading } = LoadingEffect();
   if (loading) {
-    return <Loading style={"h-56 mx-20 mt-5 rounded-lg"} />;
+    return <Loading style={"h-56 lg:mx-20 mt-5 rounded-lg"} />;
   }
 
   return (
     <>
-      <div className="h-56 group  pt-5 sm:h-64 xl:h-80  2xl:h-96 mx-20 relative">
+      <div className="lg:h-56 h-72 group  mx-5  2xl:h-96 lg:mx-20 relative">
         <Carousel
           leftControl={
             <span className="absolute opacity-0  group-hover:opacity-100 transition-all duration-300 ease-out group-hover:-left-5 left-0 top-1/2 z-[999] -translate-y-1/2">

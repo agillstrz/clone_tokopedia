@@ -42,7 +42,7 @@ function Product() {
           ))}
         </div>
 
-        <div className="grid grid-cols-6 gap-x-3 gap-y-5 mt-5">
+        <div className="grid lg:grid-cols-5 grid-cols-2 gap-x-2 lg:gap-x-3 gap-y-5 mt-5">
           {mproduct.map((m, index) => (
             <CardProduct key={index} data={m} />
           ))}

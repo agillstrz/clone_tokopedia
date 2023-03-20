@@ -23,7 +23,7 @@ function ModalLogin({ setModal, modal }) {
     <div
       className={`w-full  ${
         modal ? "visible" : "invisible"
-      } h-screen overflow-hidden bg-black/60 fixed z-[9999] transition-all duration-150 ease-out`}
+      } h-screen overflow-hidden bg-black/60 fixed top-0 z-[9999] transition-all duration-150 ease-out`}
     >
       <div
         className={`fixed ${

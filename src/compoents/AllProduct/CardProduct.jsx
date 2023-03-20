@@ -1,15 +1,18 @@
 import { FormatRupiah } from "@arismun/format-rupiah";
 import React from "react";
-
+import { Link } from "react-router-dom";
 function CardProduct({ data }) {
   return (
-    <div className="w-48 h-[21rem] cursor-pointer group bg-white shadow-lg overflow-hidden flex flex-col">
+    <Link
+      to="/detail"
+      className="lg:w-[13rem] lg:h-[22rem] cursor-pointer group bg-white shadow-md hover:shadow-lg overflow-hidden flex flex-col"
+    >
       <div className="h-[55%] w-full">
         <img className="h-full w-full" src={data.foto} alt="" />
       </div>
-      <div className="h-[45%] w-full p-3">
-        <p className="  text-sm group-hover:text-main">{data.nama}</p>
-        <p className="font-semibold  text-md">
+      <div className="h-[45%] w-full  text-[12px] lg:text-sm p-3">
+        <p className=" group-hover:text-main">{data.nama}</p>
+        <p className="font-semibold  lg:text-md">
           <FormatRupiah value={data.harga} />{" "}
         </p>
         <div className="flex gap-x-2 items-center font-bold text-[11px] ">
@@ -39,13 +42,13 @@ function CardProduct({ data }) {
             </span>
           </div>
         </div>
-        <div className="flex gap-x-1 text-sm items-center">
+        <div className="flex gap-x-1 items-center">
           <span>⭐</span>
           <span className="text-abu1/90 ">{data.rating}</span>
           <span className="text-abu1/90 ">Terjual 10 rb+</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

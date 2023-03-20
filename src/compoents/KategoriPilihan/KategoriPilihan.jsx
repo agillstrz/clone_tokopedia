@@ -1,8 +1,9 @@
 import { Carousel } from "flowbite-react";
 import React, { useState } from "react";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
-import { LoadingEffect } from "../utils/LoadingEfek";
-import Loading from "./Loading";
+import { Link } from "react-router-dom";
+import { LoadingEffect } from "../../utils/LoadingEfek";
+import Loading from "../Loading";
 
 function KategoriPilihan() {
   const img = [
@@ -24,7 +25,7 @@ function KategoriPilihan() {
     },
   ];
   const [slide, setSlide] = useState(0);
-  const { loading } = LoadingEffect();
+  const { loading: load } = LoadingEffect();
   const nextSlide = () => {
     setSlide((slide) => (slide === img.length - 1 ? 0 : slide + 1));
   };
@@ -32,7 +33,7 @@ function KategoriPilihan() {
     setSlide((slide) => (slide === 0 ? img.length - 1 : slide - 1));
   };
   return (
-    <div className="w-1/2 ">
+    <div className="lg:w-1/2 ">
       <h2 className="font-bold text-2xl leading-none mb-4  text-black/80">
         Kategori Pilihan
       </h2>
@@ -61,23 +62,30 @@ function KategoriPilihan() {
           className=""
         >
           <div className="flex justify-start gap-x-2  w-full">
-            {img[0].data1.map((m, index) => (
-              <div
-                key={index}
-                className="h-36 hover:border-main transition-all duration-200 ease-out cursor-pointer rounded-lg w-44 bg-white overflow-hidden border  flex justify-center items-center"
-              >
-                <img src={m} alt="" />
-              </div>
-            ))}
+            {!load &&
+              img[0].data1.map((m, index) => (
+                <Link
+                  to="detail"
+                  key={index}
+                  className="h-36 cursor-pointer rounded-lg w-44 bg-white overflow-hidden border  flex justify-center items-center"
+                >
+                  <img src={m} alt="" />
+                </Link>
+              ))}
+            {load &&
+              [1, 2, 3].map((m, index) => (
+                <Loading key={index} style="w-44 h-36" />
+              ))}
           </div>
           <div className="flex justify-start gap-x-2  w-full">
             {img[1].data2.map((m, index) => (
-              <div
+              <Link
+                to="detail"
                 key={index}
                 className="h-36 cursor-pointer rounded-lg w-44 bg-white overflow-hidden border  flex justify-center items-center"
               >
                 <img src={m} alt="" />
-              </div>
+              </Link>
             ))}
           </div>
         </Carousel>

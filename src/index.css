@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 .content {
-  @apply px-10;
+  @apply lg:px-10 px-5 lg:mx-10;
 }
 .borders {
   @apply border border-black;
+}
+
+.textabu {
+  @apply text-black/70;
 }

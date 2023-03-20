@@ -2,6 +2,7 @@ import { FormatRupiah } from "@arismun/format-rupiah";
 import React, { useState } from "react";
 import Countdown from "react-countdown";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import { Link } from "react-router-dom";
 import { traktir } from "../../mockup/mockup";
 import { LoadingEffect } from "../../utils/LoadingEfek";
 import Loading from "../Loading";
@@ -87,7 +88,10 @@ function Traktiran() {
             ) : (
               <>
                 {data.map((m) => (
-                  <div className="bg-white border hover:-translate-y-3 cursor-pointer transition-all duration-200 ease-out  rounded-xl overflow-hidden h-[18rem] w-52  flex flex-col">
+                  <Link
+                    to="detail"
+                    className="bg-white border hover:-translate-y-3 cursor-pointer transition-all duration-200 ease-out  rounded-xl overflow-hidden h-[18rem] w-52  flex flex-col"
+                  >
                     <img className="h-[70%] p-2  w-full " src={m.foto} alt="" />
                     <div className="h-[30%] px-2 w-full flex flex-col gap-y-[2px]">
                       <p className="font-semibold  text-md">
@@ -109,7 +113,7 @@ function Traktiran() {
                         Segera abis
                       </p>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </>
             )}

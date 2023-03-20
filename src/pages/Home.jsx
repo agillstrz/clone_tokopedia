@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import Hero from "../compoents/Hero";
-import KategoriPilihan from "../compoents/KategoriPilihan";
-import Navbar from "../compoents/Navbar";
-import { BsQrCodeScan } from "react-icons/bs";
-import TopUp from "../compoents/topUp/TopUp";
-import { MdFlightTakeoff } from "react-icons/md";
-import { RxCross1 } from "react-icons/rx";
-import Traktiran from "../compoents/PenggunaBaru/Traktiran";
-import Footer from "../compoents/Footer";
 import Product from "../compoents/AllProduct/Product";
+import Hero from "../compoents/Hero";
+import KategoriPilihan from "../compoents/KategoriPilihan/KategoriPilihan";
+import Loading from "../compoents/Loading";
+import Traktiran from "../compoents/PenggunaBaru/Traktiran";
+import TopUp from "../compoents/topUp/TopUp";
+import GoToTop from "../helpers/GoToTop";
+import { LoadingEffect } from "../utils/LoadingEfek";
 function Home() {
   const [hover, setHover] = useState(false);
   const nav = [
@@ -37,19 +35,25 @@ function Home() {
       foto: "https://images.tokopedia.net/img/cache/100-square/iEWsxH/2021/10/6/b5a8add5-ed3f-400b-8f98-f484d22af153.png",
     },
   ];
+  const { loading } = LoadingEffect();
   return (
     <>
-      <div>
-        <Navbar setHover={setHover} />
-        <div className="relative mb-20">
-          <Hero />
-          <div className="flex flex-col gap-y-5 mx-20">
-            <div className="mt-5 border bg-white rounded-lg shadow-xl p-3">
-              <div className="flex  justify-center gap-x-2 ">
-                <KategoriPilihan />
-                <TopUp />
-              </div>
+      <div className="relative mb-20">
+        <Hero />
+        <div className="flex flex-col gap-y-5 content">
+          <div className="mt-5 border bg-white rounded-lg shadow-xl p-3">
+            <div className="flex lg:flex-row flex-col justify-center gap-x-2 ">
+              <KategoriPilihan />
+              <TopUp />
+            </div>
 
+            {loading ? (
+              <ul className="flex gap-x-2 mt-5">
+                {[1, 2, 3, 4, 5, 6].map((m, index) => (
+                  <Loading style="h-8 w-52 rounded-lg" />
+                ))}
+              </ul>
+            ) : (
               <ul className="flex gap-x-2 mt-5">
                 {nav.map((m, index) => (
                   <li
@@ -60,15 +64,13 @@ function Home() {
                   </li>
                 ))}
               </ul>
-            </div>
-
-            <Traktiran />
-            <Product />
+            )}
           </div>
+          <Traktiran />
+          <Product />
         </div>
       </div>
-
-      <Footer />
+      <GoToTop />
     </>
   );
 }
